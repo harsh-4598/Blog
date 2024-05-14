@@ -1,0 +1,1 @@
+INSERT INTO USERS (name, email, password, about, created_on, modified_on) VALUES ('Harsh Panchal', 'spidy@gmail.com', '$2a$12$JeTECePhbCqce9cxdkBQiO6awroRCUfKpFyVRch0QSz75g8aJu6MG', 'I am a software engineer, I work for xyz', NOW(), NOW());

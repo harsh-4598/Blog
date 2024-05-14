@@ -1,0 +1,12 @@
+1)Create spring boot container, mysql and network separately
+Steps
+a)Place holder for database config in application.properties
+b)Pull mysql image from docker hub (> docker pull mysql)
+b)docker run mysql image (> docker run -d -p 3307:3306 --name mysqldb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=blog mysql -e MYSQL_USER=root -e MYSQL_PASSWORD=root)
+c)create network (> docker network create networkmysql)
+d)connect network (> docker network connect networkmysql mysqldb)
+e)build jar (> mvn clean install pom.xml)
+f)build spring boot application image using docker file (> docker build -t blog .)
+g)run image (> docker run -p 9090:8080 --name blogapp --net networkmysql -e MYSQL_HOST=mysqldb -e MYSQL_PORT=3306 -e MYSQL_DB_NAME=blog -e MYSQL_USER=root -e MYSQL_PASSWORD=root -d blog)
+
+2)Using docker-compose.yml file
